@@ -5,13 +5,19 @@ services:
     links:
       - db
     ports:
-      - "5000:5000"
+      - "5050:5050"
+    environment:
+      DB_HOST: localhost
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: p1ssw0rd
+      DB_DATABASE: local-mysql
 
   db:
     image: mysql:latest
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: pa
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
